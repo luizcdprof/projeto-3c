@@ -17,6 +17,12 @@
 * python manage.py createsuperuser
 * python manage.py runserver
 
+## Acessar o projeto para obter o endereço pra liberar o CSRF 
+* Segure o "ctrl" e clique no endereço IP que está no terminal (http://127.0.0.1:8000/)
+* Vai aparecer a janela do django com o foguete. Clique na barra de endereços e adicione "/admin" ao final
+* Faça o login com o usuário e senha criados no comando createsuperuser
+* Irá aparecer uma janela com erro. Nessa janela, abaixo do texto em negrito "Help", na linha escrito "Origin checking failed - ", tem o endereço que começa com "https" e termina com ".dev". Esse endereço que será usado na linha 30 do settings.py.
+ 
 ## mysite/mysite/settings.py
 ### Na linha 14:
 * import os
@@ -76,6 +82,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 * urls.py:
 * templates/usuarios_criar.html
 * templates/usuarios_listar.html
+* templates/usuarios_login.html
 
 ## mysite/livros/
 ### Criar os arquivos e/ou copiar o código do github:
