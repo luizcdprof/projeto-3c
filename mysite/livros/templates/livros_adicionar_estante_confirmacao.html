@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Adicionar à Estante?
+{% endblock %}
+
+{% block content %}
+    <h2>Deseja adicionar "{{ livro.titulo }}" à sua estante?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="adicionar">Sim</button>
+        <button type="submit">Não</button>
+    </form>
+{% endblock %}

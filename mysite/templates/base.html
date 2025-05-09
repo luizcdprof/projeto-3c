@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Projeto 3C</h1>
+            <ul>
+              <li><a href="{% url 'home' %}">Início</a></li>
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'usuarios_listar' %}">Listar Usuários</a></li>
+                <li><a href="{% url 'livros_catalogo' %}">Catálogo de Livros</a></li>
+                <li><a href="{% url 'livros_estante' %}">Minha Estante</a></li>
+                <li><a href="{% url 'logout' %}">Sair</a></li>
+                Olá, {{ user.username }}
+              {% else %}
+                <a href="{% url 'login' %}">Login</a> | <a href="{% url 'usuarios_criar' %}">Cadastro</a>
+              {% endif %}
+            </ul>
+          </nav>
+        <hr />
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

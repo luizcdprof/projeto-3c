@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Minha Estante
+{% endblock %}
+
+{% block content %}
+<h2>Minha Estante</h2>
+    <ul>
+        {% for item in estante %}
+            <li>
+                {% if item.livro.capa %}
+                    <img src="{{ item.livro.capa.url }}" width="80">
+                {% else %}
+                    <img src="{% static 'images/default_book.png' %}" width="80">
+                {% endif %}
+                {{ item.livro.titulo }} - {{ item.livro.autor }}
+                <a href="{% url 'estante_remover' item.livro.id %}">Remover</a>
+            </li>
+        {% empty %}
+            <p>Você ainda não tem livros na sua estante.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Catálogo
+{% endblock %}
+
+{% block content %}
+    <h2>Catálogo de Livros</h2>
+    <ul>
+    {% for livro in livros %}
+        <li>
+            {% if item.livro.capa %}
+                <img src="{{ item.livro.capa.url }}" width="80">
+            {% else %}
+                <img src="{% static 'images/default_book.png' %}" width="80">
+            {% endif %}
+            <strong>{{ livro.titulo }}</strong> - {{ livro.autor }} - {{ livro.genero }}
+            <br>
+            <form method="post" action="{% url 'livros_toggle_estante' livro.id %}">
+                {% csrf_token %}
+                {% if livro.id in estante_ids %}
+                    <button type="submit">Remover da Estante</button>
+                {% else %}
+                    <button type="submit">Adicionar à Estante</button>
+                {% endif %}
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
