@@ -103,6 +103,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 * cd mysite
 * python manage.py collectstatic
 * python manage.py makemigrations
+* python manage.py migrate
 * python manage.py runserver
 
 ## Acessar o sistema:
