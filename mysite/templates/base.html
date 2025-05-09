@@ -14,6 +14,7 @@
             <ul>
               <li><a href="{% url 'home' %}">Início</a></li>
               {% if user.is_authenticated %}
+                <li><a href="{% url 'usuarios_criar' %}">Criar Usuários</a></li>
                 <li><a href="{% url 'usuarios_listar' %}">Listar Usuários</a></li>
                 <li><a href="{% url 'livros_listar' %}">Listar Livros</a></li>
                 <li><a href="{% url 'livros_catalogo' %}">Catálogo de Livros</a></li>
