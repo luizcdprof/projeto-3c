@@ -79,7 +79,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 * admin.py
 * forms.py
 * models.py
-* urls.py:
+* urls.py
+* views.py
 * templates/usuarios_criar.html
 * templates/usuarios_listar.html
 * templates/usuarios_login.html
@@ -89,7 +90,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 * admin.py
 * forms.py
 * models.py
-* urls.py:
+* urls.py
+* views.py
 * templates/livros_adicionar_estante_confirmacao.html
 * templates/livros_cadastrar.html
 * templates/livros_catalogo.html
