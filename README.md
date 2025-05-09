@@ -1,51 +1,100 @@
-No Firebase Studio (studio.firebase.google.com)
-Criar projeto Backend-django
-Executar o projeto no Firebase
+# Instruções do projeto
+## No Firebase Studio (studio.firebase.google.com):
+* Criar projeto Backend-django
+* Executar o projeto no Firebase
 
-No terminal:
-source .venv/bin/activate
-cd mysite
-django-admin startapp usuarios
-django-admin startapp livros
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
+## Atualizar o arquivo requirements.txt
+### No final do arquivo, adicionar:
+* pillow==11.2.1
 
-Na linha 14 do settings.py, adicionar:
-import os
+## No terminal:
+* source .venv/bin/activate
+* cd mysite
+* pip install -r requirements.txt
+* django-admin startapp usuarios
+* django-admin startapp livros
+* python manage.py migrate
+* python manage.py createsuperuser
+* python manage.py runserver
 
-Na linha 30 do settings.py, adicionar:
+## mysite/mysite/settings.py
+### Na linha 14:
+* import os
+
+### Na linha 30:
+```
 CSRF_TRUSTED_ORIGINS = [
-    'endereço-do-erro-do-login-do-admin'
+     'endereço-do-erro-do-login-do-admin'
 ]
+```
 
-Na linha 43 (INSTALLED_APPS):
+### Na linha 43 (INSTALLED_APPS):
+```
 'usuarios',
 'livros'
+```
 
-Na linha 62:
+### Na linha 62:
+```
 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+```
 
-Na linha 111:
+### Na linha 111:
+```
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_TZ = False
+```
 
-Criar o arquivo de base dos templates em mysite/templates/base.html e copiar o código do github nele.
+### Na linha 124:
+```
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+```
 
-usuarios:
-Criar o arquivo urls.py e colocar o código do github nele.
-Criar a pasta "templates", os arquivos dentro dela e copiar o código do github neles:
- -usuarios_criar.html
- -usuarios_listar.html
+## mysite/
+### Criar os arquivos e/ou copiar o código do github:
+* static/images/default_book.png
 
-livros:
-Criar o arquivo urls.py e colocar o código do github nele.
-Criar a pasta "templates", e os arquivos dentro dela:
- -livros_criar.html 
- -livros_listar.html
+## mysite/mysite/
+### Criar os arquivos e/ou copiar o código do github:
+* urls.py:
 
-Adicionar os novos arquivos urls em mysite/urls.py (linha 6):
-path('usuarios/', include('usuarios.urls')),
-path('livros/', include('livros.urls'))
+## mysite/templates/
+### Criar os arquivos e/ou copiar o código do github:
+* base.html
+* home.html
+
+## mysite/usuarios/
+### Criar os arquivos e/ou copiar o código do github:
+* admin.py
+* forms.py
+* models.py
+* urls.py:
+* templates/usuarios_criar.html
+* templates/usuarios_listar.html
+
+## mysite/livros/
+### Criar os arquivos e/ou copiar o código do github:
+* admin.py
+* forms.py
+* models.py
+* urls.py:
+* templates/livros_adicionar_estante_confirmacao.html
+* templates/livros_cadastrar.html
+* templates/livros_catalogo.html
+* templates/livros_estante.html
+* templates/livros_listar.html
+
+## No terminal:
+* source .venv/bin/activate
+* cd mysite
+* python manage.py collectstatic
+* python manage.py makemigrations
+* python manage.py runserver
+
+## Acessar o sistema:
+* Segure o "control" e clique no endereço IP que for exibido no terminal (http://127.0.0.1:8000/)

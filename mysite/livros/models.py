@@ -31,7 +31,7 @@ class Livro(models.Model):
     data_cadastro = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.titulo
+        return f"{self.titulo} - {self.autor} - {self.genero}"
 
 class Estante(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)

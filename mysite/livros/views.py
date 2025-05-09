@@ -9,6 +9,12 @@ from .models import Livro, Estante
 from .forms import LivroForm
 
 @login_required
+def livros_listar(request):
+    livros = Livro.objects.all()
+    return render(request, 'livros_listar.html', {'livros': livros})
+
+
+@login_required
 def livros_cadastrar(request):
     if request.method == 'POST':
         form = LivroForm(request.POST, request.FILES)
